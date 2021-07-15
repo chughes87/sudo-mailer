@@ -8,6 +8,7 @@ router.post('/', (request, response, next) => {
   switch (event.type) {
     case 'charge.failed':
       const { email, name } = event.data.object.billing_details;
+      console.log('charge failed for ', email, name);
       mailer.failedPayment({ email, name });
       break;
     default:
